@@ -1,13 +1,10 @@
 import 'package:final_app/custom_widgets.dart';
-import 'package:final_app/home_page.dart';
+import 'src/view/home_page/home_page.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
 
 class CommentSectionPage extends StatelessWidget {
-
-  TextStyle _textStyle = TextStyle(
-    color: Colors.white
-  );
+  TextStyle _textStyle = TextStyle(color: Colors.white);
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +25,20 @@ class CommentSectionPage extends StatelessWidget {
                 child: Card(
                   color: kMyCardColour,
                   shadowColor: Colors.black,
-                  child: Text("Main Post Content",
-                  style: _textStyle,),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 30.0),
+                    child: Text(
+                      "Helloo Team, You've done until dashboard \nAn automated approach for an online grievance system for categorization, tagging & analysis of sentiments of grievances through a web & mobile portal using Deep Learning models.",
+                      textAlign: TextAlign.justify,
+                      style: _textStyle,
+                    ),
+                  ),
                   elevation: 15,
                 ),
               ),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: TextFormField(
@@ -43,14 +48,16 @@ class CommentSectionPage extends StatelessWidget {
                   autofocus: false,
                   decoration: InputDecoration(
                     filled: true,
-                    fillColor: Colors.transparent,
+                    fillColor: kMyCardColour,
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(30.0))),
                     labelText: "Comment",
                   ),
                 ),
               ),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               CustomButtons(
                 buttonContentText: "Submit",
                 firstColorOfGradient: Color(0xFFF54B64),
@@ -66,7 +73,10 @@ class CommentSectionPage extends StatelessWidget {
                   color: kMyCardColour,
                   shadowColor: Colors.black,
                   //List of All comments in Text Widget
-                  child: Text("All Comments", style: _textStyle,),
+                  child: Text(
+                    "All Comments",
+                    style: _textStyle,
+                  ),
                   elevation: 15,
                 ),
               ),
