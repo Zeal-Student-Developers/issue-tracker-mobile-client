@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import '../bottom_navigation_bar/nav_bar.dart';
+import 'package:final_app/src/components/bottom_navigation_bar/nav_bar.dart';
 
 class HomePage extends StatelessWidget {
   @override

@@ -1,5 +1,5 @@
-import '../../../constants.dart';
-import 'package:final_app/comment_section_page.dart';
+import 'package:final_app/themes.dart';
+import 'package:final_app/src/components/comment_section_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +25,9 @@ class _FeedsPageState extends State<FeedsPage> {
             ),
         child: Scaffold(
           appBar: AppBar(
+            centerTitle: true,
             title: Text(kAppName),
+            backgroundColor: kMyBackgroundColor,
           ),
           backgroundColor: kMyBackgroundColor,
           body: Column(
