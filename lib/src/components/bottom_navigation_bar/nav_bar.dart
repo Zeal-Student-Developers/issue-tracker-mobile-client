@@ -1,11 +1,10 @@
-import 'package:final_app/sign_up_page.dart';
-import 'package:final_app/src/view/profile_page/profile_page.dart';
+import 'package:final_app/src/pages/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
-import 'file:///C:/Users/vaish/Desktop/issue-tracker-mobile-client/lib/src/view/home_page/feeds.dart';
-import 'package:final_app/login_page.dart';
-import 'package:final_app/src/view/search_page/search_bar.dart';
+import 'package:final_app/src/components/home_page/feeds.dart';
+import 'package:final_app/src/pages/search_bar.dart';
+import 'package:final_app/themes.dart';
 
 class NavBar extends StatefulWidget {
   @override
@@ -20,12 +19,13 @@ class _NavBarState extends State<NavBar> {
 
   PageController controller = PageController();
 
-  List<Widget> _pages = [FeedsPage(), ProfilePage(), SearchPage()];
+  List<Widget> _pages = [FeedsPage(), SearchPage(), ProfilePage()];
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
+        backgroundColor: kMyBackgroundColor,
         body: PageView.builder(
           onPageChanged: (page) {
             setState(() {
@@ -43,7 +43,7 @@ class _NavBarState extends State<NavBar> {
           child: Container(
             margin: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
             decoration: BoxDecoration(
-              color: Colors.black,
+              color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(100)),
               boxShadow: [
                 BoxShadow(
@@ -61,7 +61,7 @@ class _NavBarState extends State<NavBar> {
                   GButton(
                     gap: gap,
                     iconActiveColor: Colors.purple,
-                    iconColor: Colors.white,
+                    iconColor: Colors.black,
                     textColor: Colors.purple,
                     backgroundColor: Colors.purple.withOpacity(.2),
                     iconSize: 24,
@@ -71,25 +71,25 @@ class _NavBarState extends State<NavBar> {
                   ),
                   GButton(
                     gap: gap,
-                    iconActiveColor: Colors.pink,
-                    iconColor: Colors.white,
-                    textColor: Colors.pink,
-                    backgroundColor: Colors.pink.withOpacity(.2),
-                    iconSize: 24,
-                    padding: padding,
-                    icon: LineIcons.user,
-                    text: 'Profile',
-                  ),
-                  GButton(
-                    gap: gap,
                     iconActiveColor: Colors.amber[600],
-                    iconColor: Colors.white,
+                    iconColor: Colors.black,
                     textColor: Colors.amber[600],
                     backgroundColor: Colors.amber[600]!.withOpacity(.2),
                     iconSize: 24,
                     padding: padding,
                     icon: LineIcons.search,
                     text: 'Search',
+                  ),
+                  GButton(
+                    gap: gap,
+                    iconActiveColor: Colors.pink,
+                    iconColor: Colors.black,
+                    textColor: Colors.pink,
+                    backgroundColor: Colors.pink.withOpacity(.2),
+                    iconSize: 24,
+                    padding: padding,
+                    icon: LineIcons.user,
+                    text: 'Profile',
                   ),
                 ],
                 selectedIndex: selectedIndex,

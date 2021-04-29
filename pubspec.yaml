@@ -14,15 +14,16 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  badges: ^2.0.0-nullsafety.1
+  http:
   google_nav_bar: ^5.0.3
   cupertino_icons: ^1.0.0
   gradient_text: ^1.0.2
   line_icons: ^2.0.1
   async: ^2.2.0
-  flappy_search_bar: 1.4.1
-  anim_search_bar: ^2.0.1
   material_floating_search_bar: ^0.3.4
+  flutter_svg: ^0.19.1
+  font_awesome_flutter: ^8.8.1
+
 
 
 
