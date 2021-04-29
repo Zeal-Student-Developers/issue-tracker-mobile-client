@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:final_app/themes.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -10,6 +11,11 @@ class _ProfileState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(kAppName),
+        backgroundColor: kMyBackgroundColor,
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {
@@ -73,7 +79,7 @@ class _ProfileState extends State<ProfilePage> {
               Expanded(
                 flex: 5,
                 child: Container(
-                  color: Colors.grey[200],
+                  color: kMyBackgroundColor,
                   child: Center(
                       child: Card(
                           margin: EdgeInsets.fromLTRB(0.0, 45.0, 0.0, 0.0),
