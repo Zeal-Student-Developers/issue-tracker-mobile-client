@@ -1,5 +1,5 @@
 import 'package:final_app/themes.dart';
-import 'package:final_app/src/components/comment_section_page.dart';
+import 'file:///C:/Users/vaish/Desktop/issue-tracker-mobile-client/lib/src/pages/comment_section_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
