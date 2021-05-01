@@ -22,7 +22,8 @@ dependencies:
   async: ^2.2.0
   material_floating_search_bar: ^0.3.4
   flutter_svg: ^0.19.1
-  font_awesome_flutter: ^8.8.1
+  shared_preferences: ^2.0.5
+
 
 
 
