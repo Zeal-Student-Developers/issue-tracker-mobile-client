@@ -1,7 +1,7 @@
 import 'package:final_app/src/components/custom_widgets.dart';
 import 'package:final_app/src/pages/home_page.dart';
 import 'package:flutter/material.dart';
-import '../../themes.dart';
+import 'package:final_app/themes.dart';
 
 class CommentSectionPage extends StatelessWidget {
   TextStyle _textStyle = TextStyle(color: Colors.white);

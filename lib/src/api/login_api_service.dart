@@ -1,5 +1,3 @@
-import 'dart:io';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -11,18 +9,20 @@ class APIService {
     var headers = {'Content-Type': 'application/json'};
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var jsonResponse = null;
-
+    int timeStamp = DateTime.now().millisecondsSinceEpoch;
     // print(postBody);
     http.Response response = await http.post(Uri.parse(url),
         body: jsonEncode(postBody), headers: headers);
-
     if (response.statusCode == 200) {
       jsonResponse = jsonDecode(response.body);
       //print(postBody);
       prefs.setString("token", jsonResponse['token']);
+      prefs.setString('refreshToken', jsonResponse['refreshToken']);
+      prefs.setInt('timeStamp', timeStamp);
+      print(jsonResponse['refreshToken']);
+      print(prefs.getInt('timeStamp'));
       return {'error': false};
     } else {
-      // print('something is wrong');
       return {'error': true};
     }
   }

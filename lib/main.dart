@@ -1,4 +1,4 @@
-import 'package:final_app/src/pages/login_page.dart';
+import 'package:final_app/src/pages/loading_page.dart';
 import 'package:flutter/material.dart';
 import 'package:final_app/themes.dart';
 
@@ -11,7 +11,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: LoginScreen(),
+      home: LodingPage(),
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: Colors.white,
