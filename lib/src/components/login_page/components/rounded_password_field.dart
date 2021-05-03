@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:final_app/themes.dart';
-import 'file:///C:/Users/vaish/Desktop/issue-tracker-mobile-client/lib/src/components/login_page/components/text_field_container.dart';
+import 'package:final_app/src/components/login_page/components/text_field_container.dart';
 
 class RoundedPasswordField extends StatelessWidget {
   final bool hidePassword = true;
