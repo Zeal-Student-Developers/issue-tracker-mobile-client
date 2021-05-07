@@ -43,7 +43,7 @@ class _NavBarState extends State<NavBar> {
           child: Container(
             margin: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Colors.white.withOpacity(.8),
               borderRadius: BorderRadius.all(Radius.circular(100)),
               boxShadow: [
                 BoxShadow(
@@ -60,10 +60,10 @@ class _NavBarState extends State<NavBar> {
                 tabs: [
                   GButton(
                     gap: gap,
-                    iconActiveColor: Colors.purple,
+                    iconActiveColor: Colors.blueAccent,
                     iconColor: Colors.black,
-                    textColor: Colors.purple,
-                    backgroundColor: Colors.purple.withOpacity(.2),
+                    textColor: Colors.blueAccent,
+                    backgroundColor: Colors.blue.withOpacity(.4),
                     iconSize: 24,
                     padding: padding,
                     icon: LineIcons.home,
@@ -71,10 +71,10 @@ class _NavBarState extends State<NavBar> {
                   ),
                   GButton(
                     gap: gap,
-                    iconActiveColor: Colors.amber[600],
+                    iconActiveColor: Colors.blueAccent,
                     iconColor: Colors.black,
-                    textColor: Colors.amber[600],
-                    backgroundColor: Colors.amber[600]!.withOpacity(.2),
+                    textColor: Colors.blueAccent,
+                    backgroundColor: Colors.blue.withOpacity(.4),
                     iconSize: 24,
                     padding: padding,
                     icon: LineIcons.search,
@@ -82,10 +82,10 @@ class _NavBarState extends State<NavBar> {
                   ),
                   GButton(
                     gap: gap,
-                    iconActiveColor: Colors.pink,
+                    iconActiveColor: Colors.blueAccent,
                     iconColor: Colors.black,
-                    textColor: Colors.pink,
-                    backgroundColor: Colors.pink.withOpacity(.2),
+                    textColor: Colors.blueAccent,
+                    backgroundColor: Colors.blue.withOpacity(.4),
                     iconSize: 24,
                     padding: padding,
                     icon: LineIcons.user,

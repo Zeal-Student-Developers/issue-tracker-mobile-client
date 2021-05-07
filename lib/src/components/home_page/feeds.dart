@@ -1,3 +1,4 @@
+import 'package:final_app/src/api/issues_api_service.dart';
 import 'package:final_app/src/pages/login_page.dart';
 import 'package:final_app/themes.dart';
 import 'package:final_app/src/components/home_page/components/feed_cards.dart';
@@ -13,6 +14,18 @@ class FeedsPage extends StatefulWidget {
 
 class _FeedsPageState extends State<FeedsPage> {
   late SharedPreferences prefs;
+  bool isLoading = true;
+  List<Map<String, dynamic>> issues = [];
+  void initState() {
+    super.initState();
+    getAllIssues().then((value) {
+      issues = value;
+      setState(() {
+        isLoading = false;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light
@@ -42,24 +55,9 @@ class _FeedsPageState extends State<FeedsPage> {
             ],
           ),
           backgroundColor: kMyBackgroundColor,
-          body: ListView(
-            children: [
-              MyCustomCard(
-                postContent:
-                    "Helloo Team, You've done until dashboard. \nAn automated approach for an online grievance system for categorization, tagging & analysis of sentiments of grievances through a web & mobile portal using Deep Learning models.",
-                // userName: "Siddharaj Jawalkar",
-                grievanceStatus: "Solved",
-                postTime: "2 Hours Ago",
-              ),
-              MyCustomCard(
-                postContent:
-                    "Helloo Team, You've done until dashboard. \nAn automated approach for an online grievance system for categorization, tagging & analysis of sentiments of grievances through a web & mobile portal using Deep Learning models.",
-                //userName: "Siddharaj Jawalkar",
-                grievanceStatus: "Solved",
-                postTime: "2 Hours Ago",
-              ),
-            ],
-          ),
+          body: isLoading
+              ? Center(child: CircularProgressIndicator())
+              : getBody(),
           floatingActionButton: FloatingActionButton.extended(
             onPressed: () {},
             label: Text("Post"),
@@ -67,6 +65,32 @@ class _FeedsPageState extends State<FeedsPage> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget getBody() {
+    return ListView.builder(
+        itemCount: 20,
+        itemBuilder: (context, index) {
+          return getCard(issues[index]);
+        });
+  }
+
+  Widget getCard(Map<String, dynamic> issue) {
+    String status;
+    if (!issue['isResolved']) {
+      status = 'resolved';
+    } else {
+      status = 'Not resolved';
+    }
+    return MyCustomCard(
+      postContent: issue['description'] ?? "content",
+      // userName: "Siddharaj Jawalkar",
+      grievanceStatus: status,
+      postTime: "2 Hours Ago",
+      newtworkImageUrl:
+          "https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cmFuZG9tfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
+      department: issue['department'],
     );
   }
 }
