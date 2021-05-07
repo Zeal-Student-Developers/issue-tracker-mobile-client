@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:final_app/themes.dart';
 import 'package:final_app/src/pages/comment_section_page.dart';
+import 'package:readmore/readmore.dart';
 
 class MyCustomCard extends StatefulWidget {
   final String postContent;
   final String grievanceStatus;
   final String postTime;
+  final String newtworkImageUrl;
+  final String department;
 
   MyCustomCard({
     required this.postContent,
     required this.grievanceStatus,
     required this.postTime,
+    required this.newtworkImageUrl,
+    required this.department,
   });
   @override
   _MyCustomCardState createState() => _MyCustomCardState();
@@ -52,14 +57,14 @@ class _MyCustomCardState extends State<MyCustomCard> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          // Text(
-                          //   widget.userName,
-                          //   style: TextStyle(
-                          //     color: Colors.white,
-                          //     fontWeight: FontWeight.w900,
-                          //     fontSize: 18,
-                          //   ),
-                          // ),
+                          Text(
+                            widget.department,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w900,
+                              fontSize: 18,
+                            ),
+                          ),
                           Padding(
                             padding: const EdgeInsets.only(top: 3.0),
                             child: Text(
@@ -118,21 +123,30 @@ class _MyCustomCardState extends State<MyCustomCard> {
             // ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Image(
-                image: AssetImage("images/random_image.jpg"),
+              child: Image.network(
+                widget.newtworkImageUrl,
+                fit: BoxFit.cover,
               ),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 8.0),
-              child: Text(
+              child: ReadMoreText(
                 widget.postContent,
+                trimLines: 5,
+                colorClickableText: Colors.black54,
+                trimMode: TrimMode.Line,
+                trimCollapsedText: 'read more',
+                trimExpandedText: ' show less',
                 textAlign: TextAlign.justify,
                 style: TextStyle(color: Colors.white),
               ),
             ),
-            Divider(
-              color: Colors.black,
-              height: 20,
+            // Divider(
+            //   color: Colors.black,
+            //   height: 20,
+            // ),
+            SizedBox(
+              height: 10.0,
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),

@@ -30,8 +30,8 @@ class APIService {
 
   Future<Map> getToken() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String token = prefs.getString('token')!;
-    String refreshToken = prefs.getString('refreshToken')!;
+    String token = prefs.getString('token') ?? "";
+    String refreshToken = prefs.getString('refreshToken') ?? "";
     dynamic postBody = <String, String>{
       "token": token,
       "refreshToken": refreshToken
@@ -42,7 +42,7 @@ class APIService {
       'Content-Type': 'application/json'
     };
 
-    int tokenTime = prefs.getInt('timeStamp')!;
+    int tokenTime = prefs.getInt('timeStamp') ?? 0;
     DateTime time = DateTime.fromMillisecondsSinceEpoch(tokenTime);
     var currentTime = DateTime.now();
     Duration timeDiff = currentTime.difference(time);
@@ -53,8 +53,8 @@ class APIService {
           body: jsonEncode(postBody), headers: headers);
       jsonResponse = jsonDecode(response.body);
       print(jsonResponse);
-      return {token: jsonResponse['token']};
+      return {'token': jsonResponse['token']};
     }
-    return {token: null};
+    return {'token': token};
   }
 }
