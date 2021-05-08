@@ -70,7 +70,7 @@ class _FeedsPageState extends State<FeedsPage> {
 
   Widget getBody() {
     return ListView.builder(
-        itemCount: 20,
+        itemCount: issues.length,
         itemBuilder: (context, index) {
           return getCard(issues[index]);
         });
@@ -88,8 +88,9 @@ class _FeedsPageState extends State<FeedsPage> {
       // userName: "Siddharaj Jawalkar",
       grievanceStatus: status,
       postTime: "2 Hours Ago",
-      newtworkImageUrl:
-          "https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cmFuZG9tfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
+      newtworkImageUrl: issue['images'].length > 0
+          ? issue['images'][0]
+          : 'https://static1.srcdn.com/wordpress/wp-content/uploads/2021/03/Among-Us-Random-Name-Generator.jpg?q=50&fit=crop&w=960&h=500&dpr=1.5',
       department: issue['department'],
     );
   }
