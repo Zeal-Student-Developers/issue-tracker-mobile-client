@@ -21,14 +21,14 @@ class _LodingPageState extends State<LodingPage> {
   checkLogingStatus() async {
     prefs = await SharedPreferences.getInstance();
     if (prefs.getString("token") != null) {
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (context) => NavBar(),
         ),
       );
     } else {
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (context) => LoginScreen(),

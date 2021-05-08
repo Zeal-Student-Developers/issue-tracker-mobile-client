@@ -1,5 +1,7 @@
 import 'package:final_app/src/api/issues_api_service.dart';
+import 'package:final_app/src/pages/create_post_page.dart';
 import 'package:final_app/src/pages/login_page.dart';
+import 'package:final_app/src/pages/profile_page.dart';
 import 'package:final_app/themes.dart';
 import 'package:final_app/src/components/home_page/components/feed_cards.dart';
 import 'package:flutter/cupertino.dart';
@@ -59,9 +61,14 @@ class _FeedsPageState extends State<FeedsPage> {
               ? Center(child: CircularProgressIndicator())
               : getBody(),
           floatingActionButton: FloatingActionButton.extended(
-            onPressed: () {},
-            label: Text("Post"),
-            icon: Icon(Icons.post_add),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => CreatePostPage(),));
+            },
+            label: Text(""),
+            icon: Padding(
+              padding: const EdgeInsets.only(left: 10.0),
+              child: Icon(Icons.post_add),
+            ),
           ),
         ),
       ),

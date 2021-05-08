@@ -1,3 +1,4 @@
+import 'package:final_app/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_text/gradient_text.dart';
 
@@ -28,8 +29,7 @@ class CustomButtons extends StatelessWidget {
               ));
         },
         shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0)),
-        padding: EdgeInsets.all(0.0),
+            RoundedRectangleBorder(borderRadius: BorderRadius.zero),
         child: Ink(
           decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -37,9 +37,9 @@ class CustomButtons extends StatelessWidget {
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
               ),
-              borderRadius: BorderRadius.circular(50.0)),
+              borderRadius: BorderRadius.circular(00.0)),
           child: Container(
-            constraints: BoxConstraints(maxWidth: 300.0, minHeight: 50.0),
+            constraints: BoxConstraints(maxWidth: 100.0, minHeight: 57.0),
             alignment: Alignment.center,
             child: GradientText(buttonContentText,
                 textAlign: TextAlign.center,
@@ -66,19 +66,21 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      child: TextFormField(
-        keyboardType: textInputType,
-        obscureText: isPassword,
-        autofocus: false,
-        decoration: InputDecoration(
-          filled: true,
-          fillColor: Colors.transparent,
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(30.0))),
-          labelText: hintLable,
+    return TextFormField(
+      keyboardType: textInputType,
+      obscureText: isPassword,
+      autofocus: false,
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: kMyCardColour,
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(0.0)),
         ),
+        labelText: hintLable,
+        labelStyle: TextStyle(color: Colors.white),
+      ),
+      style: TextStyle(
+        color: Colors.white,
       ),
     );
   }
