@@ -8,3 +8,6 @@ const Color kMyBackgroundColor = Color(0xFF1d3557); //2F2F2F
 const Color kMyCardColour = Color(0xFF457b9d);
 const kPrimaryColor = Color(0xFF6F35A5);
 const kPrimaryLightColor = Color(0xFFF1E6FF);
+const TextStyle commentsTextStyle = TextStyle(
+    color: Colors.white
+);
