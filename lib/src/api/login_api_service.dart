@@ -21,7 +21,6 @@ class APIService {
       prefs.setString("token", jsonResponse['token']);
       prefs.setString('refreshToken', jsonResponse['refreshToken']);
       prefs.setInt('timeStamp', timeStamp);
-      //print(jsonResponse['refreshToken']);
       return {'error': false};
     } else {
       return {'error': true};

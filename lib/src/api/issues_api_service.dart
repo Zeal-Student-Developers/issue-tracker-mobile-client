@@ -18,9 +18,8 @@ Future<List<Map<String, dynamic>>> getAllIssues() async {
     http.Response response = await http.get(Uri.parse(url), headers: headers);
     if (response.statusCode == 200) {
       jsonResponse = jsonDecode(response.body);
-      //print(jsonResponse['issues']);
 
-      for (var issues in jsonResponse['issues']) {
+      for (var issues in jsonResponse['data']['issues']) {
         allIssues.add({
           'description': issues['description'],
           'CreatedOn': issues['CreatedOn'],
@@ -36,8 +35,6 @@ Future<List<Map<String, dynamic>>> getAllIssues() async {
   } catch (e) {
     print(e);
   }
-  // print(jsonResponse["images"][0]);
-  //print(allIssues);
 
   return allIssues;
 }
