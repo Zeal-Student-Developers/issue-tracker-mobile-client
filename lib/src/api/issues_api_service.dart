@@ -38,3 +38,37 @@ Future<List<Map<String, dynamic>>> getAllIssues() async {
 
   return allIssues;
 }
+
+Future<List<Map<String, dynamic>>> getIssuesByPhrase(String phrase) async {
+  List<Map<String, dynamic>> allIssues = [];
+  var jsonResponse;
+  var token = await apiService.getToken();
+  var queryParam = {'phrase': phrase};
+  var headers = {
+    'Authorization': 'Bearer ' + token["token"],
+    'Content-Type': 'application/json'
+  };
+  String queryString = Uri(queryParameters: queryParam).query;
+  String url = '$kBaseUrl/issues/phrase?';
+  var requestUrl = url + queryString + '&page=1&limit=10';
+  try {
+    http.Response response =
+        await http.get(Uri.parse(requestUrl), headers: headers);
+    // print(response.statusCode);
+    if (response.statusCode == 200) {
+      jsonResponse = jsonDecode(response.body);
+
+      for (var issues in jsonResponse['data']['issues']) {
+        allIssues.add({
+          'description': issues['description'],
+          'department': issues['department'],
+          'isResolved': issues['isResolved'],
+          'images': issues['images']
+        });
+      }
+    }
+  } catch (e) {
+    print(e);
+  }
+  return allIssues;
+}
