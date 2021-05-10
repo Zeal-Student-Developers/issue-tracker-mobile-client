@@ -26,14 +26,14 @@ class ProfilePage extends StatelessWidget {
                 Container(
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage("images/random_image.jpg"),
-                        fit: BoxFit.cover,
-                      )),
+                    image: AssetImage("images/random_image.jpg"),
+                    fit: BoxFit.cover,
+                  )),
                   child: Container(
                     width: double.infinity,
                     height: 200,
                     child: Container(
-                      alignment: Alignment(-0.98 , 2.3),
+                      alignment: Alignment(-0.98, 2.3),
                       child: CircleAvatar(
                         backgroundImage: AssetImage("images/user_icon.png"),
                         radius: 50.0,
@@ -127,15 +127,16 @@ class ProfilePage extends StatelessWidget {
                   thickness: 1,
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-                  child: MyCustomCard(
-                    postContent:
-                    "Helloo Team, You've done until dashboard. \nAn automated approach for an online grievance system for categorization, tagging & analysis of sentiments of grievances through a web & mobile portal using Deep Learning models.",
-                    //userName: "Siddharaj Jawalkar",
-                    grievanceStatus: "Solved",
-                    postTime: "2 Hours Ago",
-                  )
-                ),
+                    padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+                    child: MyCustomCard(
+                      postContent:
+                          "Helloo Team, You've done until dashboard. \nAn automated approach for an online grievance system for categorization, tagging & analysis of sentiments of grievances through a web & mobile portal using Deep Learning models.",
+                      //userName: "Siddharaj Jawalkar",
+                      grievanceStatus: "Solved",
+                      postTime: "2 Hours Ago", department: 'COMPUTER',
+                      newtworkImageUrl:
+                          'https://static1.srcdn.com/wordpress/wp-content/uploads/2021/03/Among-Us-Random-Name-Generator.jpg?q=50&fit=crop&w=960&h=500&dpr=1.5',
+                    )),
               ],
             ),
           ),
@@ -144,25 +145,24 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
- Widget getBody() {
+  Widget getBody() {
     return ListView.builder(
         scrollDirection: Axis.vertical,
-      itemCount: 5,
-        itemBuilder: (context , index){
-        return getCard();
-    }
-    );
- }
+        itemCount: 5,
+        itemBuilder: (context, index) {
+          return getCard();
+        });
+  }
 
- Widget getCard() {
-  return MyCustomCard(
-    postContent:
-    "Helloo Team, You've done until dashboard. \nAn automated approach for an online grievance system for categorization, tagging & analysis of sentiments of grievances through a web & mobile portal using Deep Learning models.",
-    //userName: "Siddharaj Jawalkar",
-    grievanceStatus: "Solved",
-    postTime: "2 Hours Ago",
-  );
-}
+  Widget getCard() {
+    return MyCustomCard(
+      postContent:
+          "Helloo Team, You've done until dashboard. \nAn automated approach for an online grievance system for categorization, tagging & analysis of sentiments of grievances through a web & mobile portal using Deep Learning models.",
+      //userName: "Siddharaj Jawalkar",
+      grievanceStatus: "Solved",
+      postTime: "2 Hours Ago", newtworkImageUrl: '', department: '',
+    );
+  }
 }
 
 // MyCustomCard(
@@ -172,8 +172,6 @@ class ProfilePage extends StatelessWidget {
 // grievanceStatus: "Solved",
 // postTime: "2 Hours Ago",
 // ),
-
-
 
 // MaterialApp(
 // debugShowCheckedModeBanner: false,
