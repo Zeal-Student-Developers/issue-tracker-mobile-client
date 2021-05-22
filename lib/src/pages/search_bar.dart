@@ -31,11 +31,12 @@ class _SearchPageState extends State<SearchPage> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Row(
+//TODO : Check the Position of Widgets in Stack
+                Stack(
                   children: [
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 8.0),
                         child: TextFormField(
                           onChanged: (value) {
                             issueName = value;
@@ -43,19 +44,20 @@ class _SearchPageState extends State<SearchPage> {
                           cursorColor: Colors.white,
                           cursorWidth: 1.5,
                           decoration: InputDecoration(
+                            //suffixIcon: Icon(Icons.search),
                             contentPadding: const EdgeInsets.all(20),
                             labelText: 'Search Issue',
-                            labelStyle: TextStyle(color: Colors.white),
+                            labelStyle: TextStyle(color: Colors.black),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                               borderSide: BorderSide(
-                                color: Colors.blue,
+                                color: Colors.deepPurple,
                                 width: 1.5,
                               ),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Colors.blue,
+                                color: Colors.deepPurple,
                                 width: 2,
                               ),
                             ),
@@ -63,16 +65,20 @@ class _SearchPageState extends State<SearchPage> {
                         ),
                       ),
                     ),
-                    FlatButton(
-                      onPressed: () {
-                        FocusScope.of(context).requestFocus(new FocusNode());
-                        buildSearchIssuePage();
-                      },
-                      child: Text(
-                        'Search',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
+                    Positioned(
+                      top: 12,
+                      right: 15,
+                      child: FlatButton(
+                        minWidth: 70,
+                        height: 50,
+                        color: Colors.deepPurple.withOpacity(.4),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        onPressed: () {
+                          FocusScope.of(context).requestFocus(new FocusNode());
+                          buildSearchIssuePage();
+                        },
+                        child: Icon(Icons.search_outlined),
                       ),
                     )
                   ],
@@ -120,6 +126,7 @@ class _SearchPageState extends State<SearchPage> {
 
     for (var issue in issues) {
       searchIssuePageContents.add(MyCustomCard(
+        postTitle: "issue Title",
           postContent: issue['description'] ?? "content",
           grievanceStatus: 'resolved',
           postTime: '2 hours ago',

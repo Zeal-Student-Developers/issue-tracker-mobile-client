@@ -1,7 +1,6 @@
 import 'package:final_app/src/api/issues_api_service.dart';
 import 'package:final_app/src/pages/create_post_page.dart';
 import 'package:final_app/src/pages/login_page.dart';
-import 'package:final_app/src/pages/profile_page.dart';
 import 'package:final_app/themes.dart';
 import 'package:final_app/src/components/home_page/components/feed_cards.dart';
 import 'package:flutter/cupertino.dart';
@@ -38,11 +37,11 @@ class _FeedsPageState extends State<FeedsPage> {
         child: Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            backgroundColor: kMyBackgroundColor,
-            title: Text(kAppName),
+            backgroundColor: kMyCardColour,
+            title: Text(kAppName, style: TextStyle(color: Colors.black),),
             actions: <Widget>[
               IconButton(
-                  icon: Icon(Icons.logout),
+                  icon: Icon(Icons.logout , color: Colors.black,),
                   onPressed: () async {
                     prefs = await SharedPreferences.getInstance();
                     prefs.clear();
@@ -61,6 +60,7 @@ class _FeedsPageState extends State<FeedsPage> {
               ? Center(child: CircularProgressIndicator())
               : getBody(),
           floatingActionButton: FloatingActionButton.extended(
+            backgroundColor: kMyButtonColor,
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => CreatePostPage(),));
             },
@@ -90,7 +90,9 @@ class _FeedsPageState extends State<FeedsPage> {
     } else {
       status = 'Not resolved';
     }
+    //TODO 1 = check whether that passing parameter of MyCustomCard ie. post title is ok or not
     return MyCustomCard(
+      postTitle: issue['title'] ?? "content",
       postContent: issue['description'] ?? "content",
       // userName: "Siddharaj Jawalkar",
       grievanceStatus: status,

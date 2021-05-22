@@ -1,10 +1,10 @@
 import 'package:final_app/src/pages/profile_page.dart';
+import 'package:final_app/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:final_app/src/components/home_page/feeds.dart';
 import 'package:final_app/src/pages/search_bar.dart';
-import 'package:final_app/themes.dart';
 
 class NavBar extends StatefulWidget {
   @override
@@ -25,7 +25,7 @@ class _NavBarState extends State<NavBar> {
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
-        backgroundColor: kMyBackgroundColor,
+        backgroundColor: kMyCardColour,
         body: PageView.builder(
           onPageChanged: (page) {
             setState(() {
@@ -60,10 +60,10 @@ class _NavBarState extends State<NavBar> {
                 tabs: [
                   GButton(
                     gap: gap,
-                    iconActiveColor: Colors.blueAccent,
+                    iconActiveColor: kMyButtonColor,
                     iconColor: Colors.black,
-                    textColor: Colors.blueAccent,
-                    backgroundColor: Colors.blue.withOpacity(.4),
+                    textColor: kMyButtonColor,
+                    backgroundColor: Colors.deepPurple.withOpacity(.4),
                     iconSize: 24,
                     padding: padding,
                     icon: LineIcons.home,
@@ -71,10 +71,10 @@ class _NavBarState extends State<NavBar> {
                   ),
                   GButton(
                     gap: gap,
-                    iconActiveColor: Colors.blueAccent,
+                    iconActiveColor: kMyButtonColor,
                     iconColor: Colors.black,
-                    textColor: Colors.blueAccent,
-                    backgroundColor: Colors.blue.withOpacity(.4),
+                    textColor: kMyButtonColor,
+                    backgroundColor: Colors.deepPurple.withOpacity(.4),
                     iconSize: 24,
                     padding: padding,
                     icon: LineIcons.search,
@@ -82,10 +82,10 @@ class _NavBarState extends State<NavBar> {
                   ),
                   GButton(
                     gap: gap,
-                    iconActiveColor: Colors.blueAccent,
+                    iconActiveColor: kMyButtonColor,
                     iconColor: Colors.black,
-                    textColor: Colors.blueAccent,
-                    backgroundColor: Colors.blue.withOpacity(.4),
+                    textColor: kMyButtonColor,
+                    backgroundColor: Colors.deepPurple.withOpacity(.4),
                     iconSize: 24,
                     padding: padding,
                     icon: LineIcons.user,
