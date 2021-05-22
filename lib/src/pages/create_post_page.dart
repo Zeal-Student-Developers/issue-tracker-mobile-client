@@ -13,29 +13,36 @@ class _CreatePostPageState extends State<CreatePostPage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        backgroundColor: kMyBackgroundColor,
-        title: Text(kAppName),
+        centerTitle: true,
+        backgroundColor: kMyCardColour,
+        title: Text(
+            kAppName,
+          style: TextStyle(color: Colors.black),
+        ),
       ),
       backgroundColor: kMyBackgroundColor,
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              "Create new Post",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 25,
-                fontWeight: FontWeight.normal
+            padding: const EdgeInsets.all(10.0),
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                "Create new Post",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold
+                ),
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(10.0),
             child: CreatePageCustomTextField(text: "Title", noOfLines: 1,),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(10.0),
             child: CreatePageCustomTextField(text: "Description", noOfLines: 4,),
           ),
           Padding(
@@ -46,7 +53,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
                 GestureDetector(
                   child: Icon(
                     Icons.add_a_photo,
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                   onTap: () {
                     // Navigator.push(
@@ -58,6 +65,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
                   },
                 ),
                 RaisedButton(
+                  color: kMyButtonColor,
                   onPressed: () {
                     Navigator.push(
                         context,
@@ -66,13 +74,13 @@ class _CreatePostPageState extends State<CreatePostPage> {
                         ));
                   },
                   shape:
-                  RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+                  RoundedRectangleBorder(borderRadius: BorderRadius.circular(25.0)),
                   child: Container(
-                    constraints: BoxConstraints(maxWidth: 100.0, minHeight: 30.0),
+                    constraints: BoxConstraints(maxWidth: 100.0, minHeight: 50.0),
                     alignment: Alignment.center,
                     child: Text(
-                        "Create Post",
-                        style: TextStyle(fontWeight: FontWeight.bold)),
+                        "Post",
+                        style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
                   ),
                 ),
               ],

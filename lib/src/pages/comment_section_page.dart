@@ -1,10 +1,6 @@
-import 'package:final_app/src/components/bottom_navigation_bar/nav_bar.dart';
-import 'package:final_app/src/components/custom_widgets.dart';
 import 'package:final_app/src/components/home_page/feeds.dart';
-import 'package:final_app/src/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:final_app/themes.dart';
-import 'package:flutter/services.dart';
 
 class CommentSectionPage extends StatefulWidget {
   @override
@@ -33,131 +29,195 @@ class _CommentSectionPageState extends State<CommentSectionPage>
           child: Scaffold(
             resizeToAvoidBottomInset: false,
             appBar: AppBar(
-              title: Text(kAppName),
+              centerTitle: true,
+              backgroundColor: kMyCardColour,
+              title: Text(
+                  kAppName,
+                style: TextStyle(color: Colors.black),
+              ),
             ),
-            backgroundColor: kMyBackgroundColor,
+            //backgroundColor: kMyBackgroundColor,
             body: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Container(
-                    width: double.maxFinite,
-                    padding:
+                  Column(
+                    children: [
+// Title and Its Description
+                      Container(
+                        color: kMyBackgroundColor,
+                        width: double.maxFinite,
+                        padding:
                         EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-                    child: Card(
-                      color: kMyCardColour,
-                      shadowColor: Colors.black,
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 30.0),
-                        child: Text(
-                          "Helloo Team, You've done until dashboard \nAn automated approach for an online grievance system for categorization, tagging & analysis of sentiments of grievances through a web & mobile portal using Deep Learning models.",
-                          textAlign: TextAlign.justify,
-                          style: commentsTextStyle,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Title of the Issue",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold
+                              ),
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              "Description - Helloo Team, You\'ve done until dashboard. \nAn automated approach for an online grievance system for categorization, tagging & analysis of sentiments of grievances through a web & mobile portal using Deep Learning models.",
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
+                              textAlign: TextAlign.justify,
+                            )
+                          ],
                         ),
                       ),
-                      elevation: 15,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
-                    child: TabBar(
-                      unselectedLabelColor: Colors.white24,
-                      labelColor: Colors.white,
-                      tabs: [
-                        Tab(
-                          //icon: Icon(Icons.comment),
-                          text: "Comments",
+// TabBar
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
+                        child: TabBar(
+                          unselectedLabelColor: Colors.grey,
+                          labelColor: kMyButtonColor,
+                          tabs: [
+                            Tab(
+                              //icon: Icon(Icons.comment),
+                              text: "Comments",
+                            ),
+                            Tab(
+                              //icon: Icon(Icons.question_answer_outlined),
+                              text: "Solutions",
+                            )
+                          ],
+                          indicatorColor: kMyButtonColor,
+                          controller: _tabController,
+                          indicatorSize: TabBarIndicatorSize.tab,
                         ),
-                        Tab(
-                          //icon: Icon(Icons.question_answer_outlined),
-                          text: "Solutions",
-                        )
-                      ],
-                      controller: _tabController,
-                      indicatorSize: TabBarIndicatorSize.tab,
-                    ),
-                  ),
-                  // SizedBox(
-                  //   height: 10,
-                  // ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height/1.9,
-                    child: TabBarView(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: ListView(
-                            shrinkWrap: true,
-                            children: [
-                              Text('Comments no 1' , style: commentsTextStyle,),
-                              Divider(thickness: 1),
-                              Text('Comments no 2' , style: commentsTextStyle,),
-                              Divider(thickness: 1),
-                              Text('Comments no 3' , style: commentsTextStyle,),
-                              Divider(thickness: 1),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: ListView(
-                            shrinkWrap: true,
-                            children: [
-                              Text('Solution no 1' , style: commentsTextStyle,),
-                              Divider(thickness: 1),
-                              Text('Solution no 2' , style: commentsTextStyle,),
-                              Divider(thickness: 1),
-                              Text('Solution no 3' , style: commentsTextStyle,),
-                              Divider(thickness: 1),
-                            ],
-                          ),
-                        )
-                      ],
-                      controller: _tabController,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Flexible(
-                          child: TextFormField(
-                            autofocus: false,
-                            decoration: InputDecoration(
-                              filled: true,
-                              fillColor: kMyCardColour,
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.only(topRight: Radius.zero, bottomRight: Radius.zero, topLeft: Radius.circular(8.0), bottomLeft: Radius.circular(8.0)),
+                      ),
+                      // SizedBox(
+                      //   height: 10,
+                      // ),
+// TabBar Content
+// TODO : Create TextBox and
+// TODO : Check the alignment of Comment submit section
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height/1.8,
+                        child: TabBarView(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: ListView(
+                                shrinkWrap: true,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
+                                    child: Card(
+                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                                      color: kMyBackgroundColor,
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(vertical: 10.0 , horizontal: 10.0),
+                                        child: Text('Comments no 1 - Helloo Team, You\'ve done until dashboard. \nAn automated approach for an online grievance system for categorization, tagging & analysis of sentiments of grievances through a web & mobile portal using Deep Learning models.' , style: commentsTextStyle,),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
+                                    child: Card(
+                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                                      color: kMyBackgroundColor,
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(vertical: 10.0 , horizontal: 10.0),
+                                        child: Text('An automated approach for an online grievance system for categorization, tagging & analysis of sentiments of grievances through a web & mobile portal using Deep Learning models.' , style: commentsTextStyle,),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                              labelText: "",
-                              labelStyle: TextStyle(color: Colors.white),
                             ),
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: ListView(
+                                shrinkWrap: true,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
+                                    child: Card(
+                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                                      color: kMyBackgroundColor,
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(vertical: 10.0 , horizontal: 10.0),
+                                        child: Text('Solution no 1 - Helloo Team, You\'ve done until dashboard. \nAn automated approach for an online grievance system for categorization, tagging & analysis of sentiments of grievances through a web & mobile portal using Deep Learning models.' , style: commentsTextStyle,),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
+                                    child: Card(
+                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                                      color: kMyBackgroundColor,
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(vertical: 10.0 , horizontal: 10.0),
+                                        child: Text('An automated approach for an online grievance system for categorization, tagging & analysis of sentiments of grievances through a web & mobile portal using Deep Learning models.' , style: commentsTextStyle,),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                          controller: _tabController,
                         ),
-                        RaisedButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => FeedsPage(),
-                                ));
-                          },
-                          shape:
-                          RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.zero , bottomLeft: Radius.zero , bottomRight: Radius.circular(8.0) , topRight: Radius.circular(8.0))),
-                          child: Container(
-                              constraints: BoxConstraints(maxWidth: 100.0, minHeight: 57.0),
-                              alignment: Alignment.center,
-                              child: Text(
-                              "Submit",
-                                  style: TextStyle(fontWeight: FontWeight.bold)),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Flexible(
+                              child: TextFormField(
+                                autofocus: false,
+                                decoration: InputDecoration(
+                                  filled: true,
+                                  fillColor: kMyCardColour,
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.only(topRight: Radius.zero, bottomRight: Radius.zero, topLeft: Radius.circular(8.0), bottomLeft: Radius.circular(8.0)),
+                                  ),
+                                  labelText: "",
+                                  labelStyle: TextStyle(color: Colors.black),
+                                ),
+                                style: TextStyle(
+                                  color: Colors.black,
+                                ),
+                              ),
                             ),
-                          ),
-                      ],
-                    ),
+                            RaisedButton(
+                              color: kMyButtonColor,
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => FeedsPage(),
+                                    ));
+                              },
+                              shape:
+                              RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.zero , bottomLeft: Radius.zero , bottomRight: Radius.circular(8.0) , topRight: Radius.circular(8.0))),
+                              child: Container(
+                                  constraints: BoxConstraints(maxWidth: 100.0, minHeight: 57.0),
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                  "Submit",
+                                      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+                                ),
+                              ),
+                          ],
+                        ),
+                      ),
+                    ],
                   )
                 ],
               ),
